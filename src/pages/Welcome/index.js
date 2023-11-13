@@ -16,19 +16,20 @@ export default function Welcome() {
     return (
         <View style={styles.container}>
             <View style={styles.containerLogo}>
-                <Image
+                <Animatable.Image
+                    animation='flipInY'
                     source={require('../../assets/leaf-logo.png')}
                     style={{width: '200px'}}
                     resizeMode='contain'/>
             </View>
             <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
-                <Text style={styles.title}>Mensagens motivadoras que te ajudam a alcançar seus objetivos!</Text>
+                <Text style={styles.title}>Atinja seus objetivos através de mensagens motivadoras.</Text>
                 <Text style={styles.auxText}>Acesse para começar</Text>
 
                 <TouchableOpacity 
                 style={styles.button}
                 onPress={ () => navigation.navigate('SignIn')}>
-                    <Text style={styles.buttonText}>Vamos Lá!</Text>
+                    <Text style={styles.buttonText}>Vamos lá!</Text>
                 </TouchableOpacity>
             </Animatable.View>
 
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     auxText:{
         color: '#8D8D8D',
         position: 'absolute',
-        bottom: '32%',
+        bottom: '35%',
         alignSelf: 'center',
     },
 
@@ -89,6 +90,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#F5F5F5',
         fontWeight: 'bold',
-    }
+    },
 
 })

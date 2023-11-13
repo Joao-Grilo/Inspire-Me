@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native'
+import * as Animatable from 'react-native-animatable'
 
 
 export default function SignIn() {
     const navigation = useNavigation();
+    
 
     return (
         <View style={styles.container}>
@@ -16,7 +18,7 @@ export default function SignIn() {
             <View style={styles.containerForm}>
                 <Text style={styles.welcomeText}>Cadastro</Text>
 
-                <Text style={styles.inputTitle}>Nome Completo</Text>
+                <Text style={styles.inputTitle}>Nome completo</Text>
                 <TextInput placeholder='Insira seu nome' style={styles.inputText}/>
 
                 <Text style={styles.inputTitle}>Email</Text>
