@@ -7,7 +7,7 @@ export default function SignIn() {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView behavior='position' style={styles.container}>
             <Animatable.View animation='fadeInLeft' delay={500} style={styles.containerHeader}>
                 <Image source={require('../../assets/leaf-text-logo.png')}/>
                 <Text style={styles.underText}>Your daily boost to reach your goals!</Text>
@@ -21,7 +21,7 @@ export default function SignIn() {
                 <Text style={styles.inputTitle}>Senha</Text>
                 <TextInput placeholder='Insira sua senha' style={styles.inputText}/>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Home')}>
                     <Text style={styles.buttonText}>Conectar</Text>
                 </TouchableOpacity>
 
@@ -33,7 +33,7 @@ export default function SignIn() {
                     <Text style={styles.registerButtonText }>Cadastre-se</Text>
                 </TouchableOpacity>
             </Animatable.View>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
     },
 
     containerHeader:{
-        marginTop:'24%',
-        marginBottom:'26%',
+        marginTop:'34%',
+        marginBottom:'20%',
         paddingStart: '5%',
         paddingEnd: '5%',
         alignSelf: 'center',
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
     containerForm:{
         alignSelf: 'center',
         width: '72%',
-        height: '56%',
         backgroundColor: '#F5F5F5',
         borderRadius: 20,
     },
