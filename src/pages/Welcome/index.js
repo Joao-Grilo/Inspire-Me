@@ -26,9 +26,7 @@ export default function Welcome() {
                 <Text style={styles.title}>Atinja seus objetivos através de mensagens motivadoras.</Text>
                 <Text style={styles.auxText}>Acesse para começar</Text>
 
-                <TouchableOpacity 
-                style={styles.button}
-                onPress={ () => navigation.navigate('SignIn')}>
+                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('SignIn')}>
                     <Text style={styles.buttonText}>Vamos lá!</Text>
                 </TouchableOpacity>
             </Animatable.View>

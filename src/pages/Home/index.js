@@ -10,6 +10,9 @@ export default function Home() {
     return (
         <View>
             <Header currentScreen={'TELA INICIAL'}/>
+            <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('SentenceHistory')}>
+                <Text style={styles.buttonText}>Histórico de frases</Text>
+            </TouchableOpacity>
         </View>
     );
 }
