@@ -1,0 +1,6 @@
+export const API_KEY = 'AIzaSyCyiY90r3xF-V2_oHuuZQpRaAMi63KK74s'
+export const AUTH_DOMAIN = 'inspire-me-a8d10.firebaseapp.com'
+export const PROJECT_ID = 'inspire-me-a8d10'
+export const STORAGE_BUCKET = 'inspire-me-a8d10.appspot.com'
+export const MESSAGING_SENDER_ID = '203605135043'
+export const APP_ID = '1:203605135043:web:300ec8047d54ae8d035c76'
