@@ -21,7 +21,7 @@ export default function SignIn() {
                 <Text style={styles.inputTitle}>Senha</Text>
                 <TextInput placeholder='Insira sua senha' style={styles.inputText}/>
 
-                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('BottomTabNavigation')}>
                     <Text style={styles.buttonText}>Conectar</Text>
                 </TouchableOpacity>
 
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         width: '72%',
         backgroundColor: '#F5F5F5',
         borderRadius: 20,
+        
     },
 
     welcomeText:{
