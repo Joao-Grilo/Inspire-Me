@@ -1,4 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
@@ -7,16 +9,43 @@ import SentenceHistory from "../pages/SentenceHistory";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { store } from '../store'
+import GoalList from "../pages/GoalList";
+import NewGoal from "../pages/NewGoal";
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-export default function Routes() {
+function BottomTabNavigation() {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{ headerShown: false }}
+            />
+
+            <Tab.Screen
+                name="GoalList"
+                component={GoalList}
+                options={{ headerShown: false }}
+            />
+
+            <Tab.Screen
+                name="NewGoal"
+                component={NewGoal}
+                options={{ headerShown: false }}
+            />
+        </Tab.Navigator>
+    );
+}
+
+export default function StackNavigation() {
     const navigation = useNavigation()
 
     useEffect(() => {
         const checkAuthState = async () => {
             await store.user.autoLogin()
-            if (store.user.currentUser) navigation.navigate('Home')
+            if (store.user.currentUser) navigation.navigate('BottomTabNavigation')
         }
 
         checkAuthState()
@@ -43,17 +72,11 @@ export default function Routes() {
             />
 
             <Stack.Screen
-                name="Home"
-                component={Home}
+                name="BottomTabNavigation"
+                component={BottomTabNavigation}
                 options={{ headerShown: false }}
             />
-
-            <Stack.Screen
-                name="SentenceHistory"
-                component={SentenceHistory}
-                options={{ headerShown: false }}
-            />
-
         </Stack.Navigator>
     )
 }
+

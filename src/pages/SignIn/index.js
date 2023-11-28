@@ -58,12 +58,8 @@ export default function SignIn() {
                     {errors.password && (<Text style={styles.errors}>{errors.password}</Text>)}
                 </View>
 
-                <TouchableOpacity style={styles.button} disabled={loading} onPress={() => onSubmit()}>
-                    {loading ? (
-                        <ActivityIndicator color='#FFFFFF' size='small' />
-                    ) : (
-                        <Text style={styles.buttonText}>Conectar</Text>
-                    )}
+                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('BottomTabNavigation')}>
+                    <Text style={styles.buttonText}>Conectar</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.alternativeText}>ou</Text>
@@ -109,6 +105,7 @@ const styles = StyleSheet.create({
         width: '72%',
         backgroundColor: '#F5F5F5',
         borderRadius: 20,
+        
     },
 
     welcomeText: {
