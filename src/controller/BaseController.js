@@ -3,12 +3,6 @@ import { db } from '../firebase/config'
 import { uploadBytes } from 'firebase/storage'
 
 export default class BaseController {
-  async upload(uid, file) {
-    const storageRef = ref(storage, `${uid}`)
-    const snapshot = await uploadBytes(storageRef, file)
-    return snapshot.metadata.fullPath
-  }
-
   async getDocRef(docRef) {
     const res = await getDoc(docRef)
     return res.data()

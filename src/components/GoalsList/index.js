@@ -1,29 +1,39 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList , Dimensions} from 'react-native'
 import * as Animatable from 'react-native-animatable'
+import { programacao, academia, fumar } from '../../utils/frases'
+import { store } from '../../store'
 
 const {width} = Dimensions.get('window')
 
 export default function GoalsList() {
-    const navigation = useNavigation();
+    const navigation = useNavigation()
+
+    const [text, setText] = useState('')
 
     const data = [
-        Objetivo1 = {
+        {
+            id: 1,
+            type: 'fumar',
             goalName: 'Parar de fumar',
             goalDescription: 'Quero parar de fumar dentro de um ano',
             goalCreationDate: '19/11',
             goalStatus: '0',
             goalConclusionDate: ''
         },
-        Objetivo2 = {
+        {
+            id: 2,
+            type: 'academia',
             goalName: 'Ir na academia',
             goalDescription: 'Quero ir até a academia 4 vezes na semana',
             goalCreationDate: '19/11',
             goalStatus: '0',
             goalConclusionDate: ''
         },
-        Objetivo3 = {
+        {
+            id: 3,
+            type: 'programacao',
             goalName: 'Estudar programação',
             goalDescription: 'Quero estudar programação todos os dias dessa semana',
             goalCreationDate: '19/11',
@@ -32,29 +42,44 @@ export default function GoalsList() {
         },
     ]
 
+    const randow = async type => {
+        const random = Math.floor(Math.random() * fumar.length)
+
+        let text = ''
+
+        if(type === 'fumar') text = fumar[random]
+        else if(type === 'academia') text = academia[random]
+        else if(type === 'programacao') text = programacao[random]
+        
+        setText(text)
+        store.user.saveFrase(text)
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.goalsListText}>Meus objetivos</Text>
             <FlatList
-            data={data}
-            keyExtractor={(item) => String(item)}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            renderItem={({item}) => 
-            <TouchableOpacity>
-                <View style={styles.goalCard}>
-                    <Text style={styles.goalName}>{item.goalName}</Text>
-                    <Text style={styles.goalDescription}>{item.goalDescription}</Text>
-                </View>
-            </TouchableOpacity>}
+                data={data}
+                keyExtractor={item => item.id}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                renderItem={({item}) => 
+                    <TouchableOpacity onPress={() => randow(item.type)}>
+                        <View style={styles.goalCard}>
+                            <Text style={styles.goalName}>{item.goalName}</Text>
+                            <Text style={styles.goalDescription}>{item.goalDescription}</Text>
+                        </View>
+                    </TouchableOpacity>
+                }
             />
+
+            <Text>{text}</Text>
         </View>
     );
 }
 
 
 const styles = StyleSheet.create({
-
     container: {
         marginTop: 50,
         marginLeft: 10,

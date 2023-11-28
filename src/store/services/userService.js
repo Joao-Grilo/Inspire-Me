@@ -9,7 +9,6 @@ export const userService = {
   async create(payload) {
     try {
       this.currentUser = await authController.create(payload)
-      console.log(this.currentUser)
     } catch (error) {
       return console.log(error)
     }
@@ -23,4 +22,16 @@ export const userService = {
       return console.log(error)
     }
   },
+
+  async autoLogin() {
+    this.currentUser = await authController.autoLogin()
+  },
+
+  async saveFrase(payload) {
+    try {
+      await authController.saveFrase(payload)
+    } catch (error) {
+      return console.log(error)
+    }
+  }
 }

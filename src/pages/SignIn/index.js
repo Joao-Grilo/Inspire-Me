@@ -32,7 +32,6 @@ export default function SignIn() {
 
         setLoading(true)
         await store.user.login({ email, password })
-        console.log(store.user.currentUser)
         if (store.user.currentUser) navigation.navigate('Home')
         setLoading(false)
     }

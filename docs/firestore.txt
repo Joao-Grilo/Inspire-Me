@@ -1,0 +1,7 @@
+User:
+  - objectivos (array of ids)
+
+Objetivos:
+  - name (string)
+  - type (string)
+  - 
