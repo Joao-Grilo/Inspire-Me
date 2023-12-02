@@ -5,39 +5,15 @@ import Welcome from '../pages/Welcome'
 import SignIn from '../pages/SignIn'
 import Register from '../pages/Register'
 import Home from '../pages/Home'
-import SentenceHistory from "../pages/SentenceHistory";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect } from "react";
 import { store } from '../store'
 import GoalList from "../pages/GoalList";
 import NewGoal from "../pages/NewGoal";
+import GoalDetails from "../pages/GoalDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function BottomTabNavigation() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen
-                name="Home"
-                component={Home}
-                options={{ headerShown: false }}
-            />
-
-            <Tab.Screen
-                name="GoalList"
-                component={GoalList}
-                options={{ headerShown: false }}
-            />
-
-            <Tab.Screen
-                name="NewGoal"
-                component={NewGoal}
-                options={{ headerShown: false }}
-            />
-        </Tab.Navigator>
-    );
-}
 
 export default function StackNavigation() {
     const navigation = useNavigation()
@@ -72,10 +48,34 @@ export default function StackNavigation() {
             />
 
             <Stack.Screen
-                name="BottomTabNavigation"
-                component={BottomTabNavigation}
-                options={{ headerShown: false }}
+                name="Home"
+                component={Home}
+                options={{headerShown: false,
+                }}
             />
+
+            <Stack.Screen
+                name="GoalList"
+                component={GoalList}
+                options={{headerShown: false,
+                }}
+            />
+
+            <Stack.Screen
+                name="NewGoal"
+                component={NewGoal}
+                options={{headerShown: false,
+                }}
+            />
+
+            <Stack.Screen
+                name="GoalDetails"
+                component={GoalDetails}
+                options={{headerShown: false,
+                }}
+            />
+
+            
         </Stack.Navigator>
     )
 }

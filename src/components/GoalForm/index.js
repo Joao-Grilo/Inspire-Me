@@ -3,16 +3,19 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput  } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
-export default function NewGoalForm() {
+export default function GoalForm() {
     const navigation = useNavigation();
 
 
     return (
         <View style={styles.container}>
             <Text style={styles.inputTitle}>Título</Text>
-            <TextInput placeholder='Insira o título do objetivo' style={styles.inputText}/>
+            <TextInput style={styles.inputText}/>
             <Text style={styles.inputTitle}>Descrição</Text>
-            <TextInput placeholder='Insira a descrição do objetivo' style={styles.inputText}/>
+            <TextInput style={styles.inputText}/>
+            <TouchableOpacity style={styles.newGoalButton}>
+                <Text style={styles.newGoalText}>SALVAR</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -39,5 +42,22 @@ const styles = StyleSheet.create({
         paddingLeft: 18,
         alignSelf: 'center',
         borderRadius: 16,
+    },
+
+    newGoalButton: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#097969',
+        width: 200,
+        height: 50,
+        marginTop: 20,
+        borderRadius: 25,
+    },
+
+    newGoalText: {
+        alignSelf: 'center',
+        color: '#F5F5F5',
+        fontSize: 18,
+        fontWeight: 'bold',
     },
 })

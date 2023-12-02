@@ -4,6 +4,7 @@ import { View, KeyboardAvoidingViewBase, ScrollView,Text, StyleSheet, TextInput,
 import * as Animatable from 'react-native-animatable'
 import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
+import NewGoalButton from '../../components/NewGoalButton';
 import HorizontalGoalsList from '../../components/HorizontalGoalsList';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
             <Header currentScreen={'TELA INICIAL'}/>
             <UserCard/>
             <HorizontalGoalsList/>
+            <NewGoalButton/>
         </View>
     );
 }

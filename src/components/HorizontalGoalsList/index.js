@@ -64,7 +64,7 @@ export default function GoalsList() {
                 showsHorizontalScrollIndicator={false}
                 horizontal
                 renderItem={({item}) => 
-                    <TouchableOpacity onPress={() => randow(item.type)}>
+                    <TouchableOpacity onPress={ () => navigation.navigate('GoalDetails')}>
                         <View style={styles.goalCard}>
                             <Text style={styles.goalName}>{item.goalName}</Text>
                             <Text style={styles.goalDescription}>{item.goalDescription}</Text>
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
         width: width*0.75,
         marginRight: 10,
         borderRadius: 20,
+        padding: 22,
     },
 
     goalsListText: {
@@ -104,18 +105,13 @@ const styles = StyleSheet.create({
     },
 
     goalName: {
-        marginTop: 16,
-        marginLeft: 22,
-        marginRight: 22,
         fontSize: 18,
         fontWeight: '700',
         color: '#505050',
     },
 
     goalDescription: {
-        marginTop: 6,
-        marginLeft: 22,
-        marginRight: 22,
+        marginTop: 8,
         fontSize: 14,
         fontWeight: '600',
         color: '#707070',

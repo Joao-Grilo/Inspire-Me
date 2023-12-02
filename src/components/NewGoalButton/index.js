@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet  } from 'react-native'
 import * as Animatable from 'react-native-animatable'
+import PlusCircleIcon from '../icons/PlusIcon';
 
 export default function NewGoalButton() {
     const navigation = useNavigation();
@@ -9,8 +10,8 @@ export default function NewGoalButton() {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('NewGoalRoute')}>
-                <Text style={styles.buttonText}>Adicionar objetivo</Text>
+            <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('NewGoal')}>
+                <PlusCircleIcon iconSize={24} iconColor={'#F5F5F5'}/>
             </TouchableOpacity>
         </View>
     );
@@ -20,21 +21,19 @@ export default function NewGoalButton() {
 const styles = StyleSheet.create({
 
     container: {
-        position: 'absolute',
         bottom: 0,
         width: '100%',
-        height: 40,
-        marginBottom: 40,
+        marginTop: 40,
     },
     
     button:{
         backgroundColor: '#097969',
-        height: 44,
-        width: 250,
+        height: 40,
+        width: 40,
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 20,   
+        borderRadius: 20,  
     },
 
     buttonText:{

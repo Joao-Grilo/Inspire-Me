@@ -58,7 +58,7 @@ export default function SignIn() {
                     {errors.password && (<Text style={styles.errors}>{errors.password}</Text>)}
                 </View>
 
-                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('BottomTabNavigation')}>
+                <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Home')}>
                     <Text style={styles.buttonText}>Conectar</Text>
                 </TouchableOpacity>
 
