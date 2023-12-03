@@ -18,7 +18,7 @@ export const userService = {
     try {
       this.currentUser = await authController.login(payload)
     } catch (error) {
-      if(error.code === 'auth/invalid-login-credentials') return Alert.alert('Error', 'Invalid Login', [{type: 'OK'}])
+      if (error.code === 'auth/invalid-login-credentials') return Alert.alert('Error', 'Invalid Login', [{ type: 'OK' }])
       return console.log(error)
     }
   },
@@ -27,11 +27,32 @@ export const userService = {
     this.currentUser = await authController.autoLogin()
   },
 
-  async saveFrase(payload) {
+  async createGoal(payload) {
     try {
-      await authController.saveFrase(payload)
-    } catch (error) {
-      return console.log(error)
+      payload.id = this.currentUser.goal[this.currentUser.goal.length - 1].id + 1
+      this.currentUser.goal.push(payload)
+      await authController.updateGoal(this.currentUser)
+    } catch (e) {
+      return console.log(e)
     }
+  },
+
+  async get() {
+    try {
+      this.currentUser = await authController.get(this.currentUser)
+    } catch (error) {
+      return console.error(error)
+    }
+  },
+
+  async updateGoal(payload) {
+    const index = this.currentUser.goal.findIndex(goal => goal.id === payload.id)
+    this.currentUser.goal[index] = payload
+    await authController.updateGoal(this.currentUser)
+  },
+
+  async deleteGoal(id) {
+    this.currentUser.goal = this.currentUser.goal.filter(goal => goal.id !== id)
+    await authController.updateGoal(this.currentUser)
   }
 }

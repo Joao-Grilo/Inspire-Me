@@ -1,59 +1,20 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, FlatList , Dimensions} from 'react-native'
-import * as Animatable from 'react-native-animatable'
-import { programacao, academia, fumar } from '../../utils/frases'
 import { store } from '../../store'
 
-const {width} = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 export default function GoalsList() {
     const navigation = useNavigation()
 
-    const [text, setText] = useState('')
+    const [data, setData] = useState(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status !== 'Completado') : null)
 
-    const data = [
-        {
-            id: 1,
-            type: 'fumar',
-            goalName: 'Parar de fumar',
-            goalDescription: 'Quero parar de fumar dentro de um ano',
-            goalCreationDate: '19/11',
-            goalStatus: '0',
-            goalConclusionDate: ''
-        },
-        {
-            id: 2,
-            type: 'academia',
-            goalName: 'Ir na academia',
-            goalDescription: 'Quero ir até a academia 4 vezes na semana',
-            goalCreationDate: '19/11',
-            goalStatus: '0',
-            goalConclusionDate: ''
-        },
-        {
-            id: 3,
-            type: 'programacao',
-            goalName: 'Estudar programação',
-            goalDescription: 'Quero estudar programação todos os dias dessa semana',
-            goalCreationDate: '19/11',
-            goalStatus: '1',
-            goalConclusionDate: ''
-        },
-    ]
-
-    const randow = async type => {
-        const random = Math.floor(Math.random() * fumar.length)
-
-        let text = ''
-
-        if(type === 'fumar') text = fumar[random]
-        else if(type === 'academia') text = academia[random]
-        else if(type === 'programacao') text = programacao[random]
-        
-        setText(text)
-        store.user.saveFrase(text)
-    }
+    useEffect(() => {
+        navigation.addListener('focus', () => {
+            setData(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status !== 'Completado') : null)
+        })
+    }, [navigation])
 
     return (
         <View style={styles.container}>
@@ -64,16 +25,14 @@ export default function GoalsList() {
                 showsHorizontalScrollIndicator={false}
                 horizontal
                 renderItem={({item}) => 
-                    <TouchableOpacity onPress={ () => navigation.navigate('GoalDetails')}>
+                    <TouchableOpacity onPress={ () => navigation.navigate('GoalDetails', { item: item})}>
                         <View style={styles.goalCard}>
-                            <Text style={styles.goalName}>{item.goalName}</Text>
-                            <Text style={styles.goalDescription}>{item.goalDescription}</Text>
+                            <Text style={styles.goalName}>{item.name}</Text>
+                            <Text style={styles.goalDescription}>{item.description}</Text>
                         </View>
                     </TouchableOpacity>
                 }
             />
-
-            <Text>{text}</Text>
         </View>
     );
 }

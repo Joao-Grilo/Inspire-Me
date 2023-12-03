@@ -11,7 +11,7 @@ export default class AuthController extends BaseController {
             displayName: payload.name
         })
 
-        await super.setDocument('Users', auth.currentUser.uid, { historico: []})
+        await super.setDocument('Users', auth.currentUser.uid, { goal: [] })
         return new User(auth.currentUser)
     }
 
@@ -31,9 +31,12 @@ export default class AuthController extends BaseController {
         return new User(auth.currentUser)
     }
 
-    async saveFrase(payload) {
-        const user = await super.getDocument('Users', auth.currentUser.uid)
-        user.historico.push(payload)
-        await super.updateDocument('Users', auth.currentUser.uid, user)
+    async updateGoal(currentUser) {
+        await super.updateDocument('Users', currentUser.uid, { goal: currentUser.goal})
+    }
+
+    async get(payload) {
+        const res = await super.getDocument('Users', payload.uid)
+        return new User({ ...payload, ...res})
     }
 }

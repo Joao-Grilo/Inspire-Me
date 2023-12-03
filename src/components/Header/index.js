@@ -1,14 +1,11 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, KeyboardAvoidingViewBase, ScrollView,Text, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native'
-import * as Animatable from 'react-native-animatable'
+import { View, Text, StyleSheet } from 'react-native'
 
 export default function Header(props) {
-    const navigation = useNavigation();
     let currentScreen = props.currentScreen
 
     return (
-        <View style={styles.container}>
+        <View>
             <View style={styles.headerBar}>
                 <Text style={styles.pageText}>{currentScreen}</Text>
             </View>
@@ -18,11 +15,6 @@ export default function Header(props) {
 
 
 const styles = StyleSheet.create({
-
-    container: {
-        
-    },
-
     headerBar: {
         height: 80,
         backgroundColor: '#097969',

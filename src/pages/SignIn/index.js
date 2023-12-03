@@ -17,11 +17,11 @@ export default function SignIn() {
     useEffect(() => {
         let error = {}
 
-        if (touched.email && !email) error.email = 'Email is required'
-        else if (touched.email && !/\S+@\S+\.\S+/.test(email)) error.email = 'Email is invalid'
+        if (touched.email && !email) error.email = 'Email é obrigatorio'
+        else if (touched.email && !/\S+@\S+\.\S+/.test(email)) error.email = 'Email não é valido'
 
-        if (touched.password && !password) error.password = '<PASSWORD>'
-        else if (touched.password && password.length < 6) error.password = '<PASSWORD>'
+        if (touched.password && !password) error.password = 'Senha é obrigatorio'
+        else if (touched.password && password.length < 6) error.password = 'Senha deve possuir no minimo 6 caracteres'
 
         setErrors(error)
         setIsFormValid(Object.keys(error).length === 0)
@@ -59,7 +59,11 @@ export default function SignIn() {
                 </View>
 
                 <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Home')}>
-                    <Text style={styles.buttonText}>Conectar</Text>
+                    { loading ? (
+                        <ActivityIndicator size="large" color="#FFFFFF" />
+                    ) : (
+                        <Text style={styles.buttonText}>Conectar</Text>
+                    )}
                 </TouchableOpacity>
 
                 <Text style={styles.alternativeText}>ou</Text>

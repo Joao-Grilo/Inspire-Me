@@ -21,7 +21,7 @@ export default function StackNavigation() {
     useEffect(() => {
         const checkAuthState = async () => {
             await store.user.autoLogin()
-            if (store.user.currentUser) navigation.navigate('BottomTabNavigation')
+            if (store.user.currentUser) navigation.navigate('Home')
         }
 
         checkAuthState()
