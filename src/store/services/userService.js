@@ -29,7 +29,9 @@ export const userService = {
 
   async createGoal(payload) {
     try {
-      payload.id = this.currentUser.goal[this.currentUser.goal.length - 1].id + 1
+      if(this.currentUser.goal.length > 0) payload.id = this.currentUser.goal[this.currentUser.goal.length - 1].id + 1
+      else payload.id = 1
+
       this.currentUser.goal.push(payload)
       await authController.updateGoal(this.currentUser)
     } catch (e) {

@@ -15,7 +15,7 @@ export default function GoalForm({ isCreated, goal }) {
 
         setLoading(true)
         if(isCreated) await store.user.createGoal({ name, description, status: 'Não Concluido' })
-        else await store.user.updateGoal({ name, description, id: goal.id, stauts: goal.status })
+        else await store.user.updateGoal({ name, description, id: goal.id, status: goal.status })
         navigation.navigate('Home')
         setLoading(false)
     }

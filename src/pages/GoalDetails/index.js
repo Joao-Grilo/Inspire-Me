@@ -25,7 +25,7 @@ export default function GoalDetails({ route }) {
 
     const setComplet = async () => {
         setLoading(true)
-        await store.user.setCompletGoal({ name, description, id, status: 'Completado'})
+        await store.user.updateGoal({ name, description, id, status: 'Completado'})
         navigation.navigate('Home')
         setLoading(false)
     }
