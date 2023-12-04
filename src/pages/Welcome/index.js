@@ -23,7 +23,7 @@ export default function Welcome() {
                     resizeMode='contain'/>
             </View>
             <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
-                <Text style={styles.title}>Atinja seus objetivos através de mensagens motivadoras.</Text>
+                <Text style={styles.title}>Organize seus objetivos pessoais de forma simples.</Text>
                 <Text style={styles.auxText}>Acesse para começar</Text>
 
                 <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('SignIn')}>
