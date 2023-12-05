@@ -27,7 +27,8 @@ export default function Home() {
             ) : (
                 <>
                     <UserCard />
-                    <HorizontalGoalsList />
+                    <HorizontalGoalsList title="Meus Objetivos" status="Não Concluido" />
+                    <HorizontalGoalsList title="Objetivos Completados" status="Completado" />
                     <NewGoalButton />
                 </>
             )}

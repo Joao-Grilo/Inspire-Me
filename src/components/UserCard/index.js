@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'relative',
     backgroundColor: '#699C95',
-    height: '30%',
+    height: '22%',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

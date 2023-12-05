@@ -1,13 +1,6 @@
-import React from 'react';
-import { 
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity
-} from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-
 import { useNavigation } from '@react-navigation/native'
 
 export default function Welcome() {
@@ -22,6 +15,7 @@ export default function Welcome() {
                     style={{width: '200px'}}
                     resizeMode='contain'/>
             </View>
+            
             <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
                 <Text style={styles.title}>Organize seus objetivos pessoais de forma simples.</Text>
                 <Text style={styles.auxText}>Acesse para começar</Text>
@@ -30,10 +24,8 @@ export default function Welcome() {
                     <Text style={styles.buttonText}>Vamos lá!</Text>
                 </TouchableOpacity>
             </Animatable.View>
-
         </View>
-
-    );
+    )
 }
 
 const styles = StyleSheet.create({

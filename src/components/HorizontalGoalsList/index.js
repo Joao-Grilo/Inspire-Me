@@ -5,10 +5,10 @@ import { store } from '../../store'
 
 const { width } = Dimensions.get('window')
 
-export default function GoalsList() {
+export default function GoalsList({ title, status }) {
     const navigation = useNavigation()
 
-    const [data, setData] = useState(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status !== 'Completado') : null)
+    const [data, setData] = useState(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status === status) : null)
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -18,7 +18,7 @@ export default function GoalsList() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.goalsListText}>Meus objetivos</Text>
+            <Text style={styles.goalsListText}>{ title }</Text>
             <FlatList
                 data={data}
                 keyExtractor={item => item.id}
