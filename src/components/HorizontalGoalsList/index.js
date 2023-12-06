@@ -8,13 +8,7 @@ const { width } = Dimensions.get('window')
 export default function GoalsList({ title, status }) {
     const navigation = useNavigation()
 
-    const [data, setData] = useState(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status === status) : null)
-
-    useEffect(() => {
-        navigation.addListener('focus', () => {
-            setData(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status !== 'Completado') : null)
-        })
-    }, [navigation])
+    const [data] = useState(store.user.currentUser.goal ? store.user.currentUser.goal.filter(goal => goal.status === status) : null)
 
     return (
         <View style={styles.container}>
